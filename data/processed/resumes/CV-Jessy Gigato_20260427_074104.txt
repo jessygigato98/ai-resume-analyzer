@@ -1,0 +1,190 @@
+ 
+ 
+                                                                                                                
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Professional 
+ 
+• Python 
+• Django 
+• Object-oriented programming 
+• PostgreSQL 
+• C# 
+• Data extraction, cleaning, 
+Transformation and analysis 
+• NLP (Natural Language 
+Processing) 
+• Web scraping 
+• OpenAI 
+• HTML 
+• CSS 
+• MongoDB 
+• Flask 
+ 
+ 
+ 
+ 
+SKILLS 
+Highly skilled and motivated Web 
+Developer with over 2 years of 
+experience in developing web 
+applications. Adept at collaborating with 
+cross-functional teams to deliver high -
+quality projects on time. Strong problem-
+solving skills and a passion for 
+continuous learning and improvement. 
+Seeking to leverage her expertise to 
+contribute to innovative projects and 
+drive success in a dynamic development 
+environment. 
+STATEMENT 
+ 
+2023 – Aug/2024 
+EXPERIENCE 
+jessy.gigato@ntsprint.com 
+Software Developer 
+Jessy Gigato 
+Software Developer Engineer 
+Paxioli /PAXIOLI 
+ 
+Location: Remote 
+Business management and accounting software system  
+developed using Python, Django, and PostgreSQL, 
+enabling data analysis and enterprise management. 
+ 
+Skills applied: 
+ 
+• Python, Django, PostgreSQL 
+ 
+ 
+Software Developer Engineer 
+Price Monitor /DATAILS 
+ 
+Location: Remote 
+Built APIs in Python for data extraction, analysis, and 
+processing. Prepared specialized academic analyses, 
+price monitoring tools, structured data on the informal 
+product market, and personalized reports based on data 
+collected using natural language processing and web 
+scraping techniques. 
+Skills applied: 
+• Python, Flask, MongoDB, web scraping 
+(Beautiful Soup), OpenAI, data extraction, data 
+analysis, NLP. 
+ 
+ 
+ 
+JAN 2023/ SEPT 2024 
+ 
+ 
+ 
+                                                                                                                
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bachelor of Computer Science 
+University of Havana 
+ 
+2016 - 2022 
+EDUCATION 
+jessy.gigato@ntsprint.com 
+ 
+Software Developer 
+Languages 
+Spanish: Native 
+ 
+English: Professional 
+ 
+French: Basic 
+Jessy Gigato 
+Personal 
+• Team Collaboration 
+• Leadership  
+• Problem-Solving 
+• Communication 
+• Creative 
+• Adaptability and Learning 
+Agility 
+ 
+FOLLOW ME 
+ 
+Github.com/JessyGigato 
+ 
+Software Developer Engineer 
+Purchase order approval /ASTER SA  
+ 
+Location: Remote 
+Web-based solution developed to manage and 
+automate the purchase order approval workflow. The 
+application offers features such as creating purchase 
+requests, assigning approvers, tracking order status, and 
+generating custom reports. 
+Skills applied: 
+• Python, Django, PostgreSQL, HTML, CSS 
+ 
+ 
+ 
+2023 – July/2024 
+ 
+ 
+• Git 
+• React 
+• JavaScript 

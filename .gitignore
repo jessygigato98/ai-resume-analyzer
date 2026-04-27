@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Datos y Documentos (opcional, si no quieres subir tus archivos de prueba)
+data/raw/*.docx
+data/raw/*.pdf
+
+# IDEs
+.vscode/
+.idea/
