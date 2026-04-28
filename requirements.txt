@@ -1,2 +1,5 @@
 pypdf
 python-docx
+numpy
+langchain_huggingface
+huggingface_hub

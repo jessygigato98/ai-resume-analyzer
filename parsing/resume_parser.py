@@ -28,5 +28,5 @@ def parse_resume(file_path: str) -> dict:
         "text": raw_text
     }
 
-parsed = parse_resume('../data/raw/CV-Jessy Gigato.pdf')
-cleaned = clean_text(parsed['text'])
+# parsed = parse_resume('../data/raw/CV-Jessy Gigato.pdf')
+# cleaned = clean_text(parsed['text'])

@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 venv/
 ENV/
+.env
 
 # Datos y Documentos (opcional, si no quieres subir tus archivos de prueba)
 data/raw/*.docx

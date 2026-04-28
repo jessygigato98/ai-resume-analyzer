@@ -36,6 +36,6 @@ def parse_job_description(
     }
 
 
-parsed = parse_job_description('data/raw/job_description.docx')
-cleaned_text = clean_text(parsed["text"])
-print(cleaned_text)
+# parsed = parse_job_description('data/raw/job_description.docx')
+# cleaned_text = clean_text(parsed["text"])
+# print(cleaned_text)
