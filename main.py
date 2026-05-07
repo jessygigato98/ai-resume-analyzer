@@ -6,6 +6,7 @@ from embeddings.embedding_service import generate_embedding
 from similarity.similarity_service import cosine_similarity_np
 from gap_analysis.gap_analyzer import simple_analyze_gaps, analyze_gaps_with_llm
 from llm.huggingface_client import HuggingFaceLLMClient
+from suggestions.suggestion_service import generate_suggestions
 
 def main():
     print("Welcome to the AI Resume Analyzer!")
@@ -63,7 +64,19 @@ def main():
     print(f"Missing skills: {gap_analysis['missing_skills']}")
     print(f"Extra skills: {gap_analysis['extra_skills']}")
 
+    print("\nGenerating resume improvement suggestions...")    
+    suggestions = generate_suggestions(
+        resume_text=clean_resume_text,
+        job_description=clean_jd_text,
+        gap_analysis=gap_analysis,
+        similarity_score=similarity_score,
+        llm_client=llm_client
+    )
 
-    
+    print("\nSuggestions:")
+    for i, suggestion in enumerate(suggestions, 1):
+        print(f"{i}. {suggestion}")
+
+
 if __name__ == "__main__":
     main()

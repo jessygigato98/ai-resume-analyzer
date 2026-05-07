@@ -13,9 +13,10 @@ class HuggingFaceLLMClient:
 
     def __init__(
         self,
-        # model: str = "CohereLabs/tiny-aya-earth"
-        # model: str = "mistralai/Mistral-7B-Instruct-v0.2"
-        model: str = "meta-llama/Meta-Llama-3-8B-Instruct",
+        model: str = "CohereLabs/tiny-aya-earth",
+        #model: str = "mistralai/Mixtral-8x22B-Instruct-v0.1",
+        # model: str = "meta-llama/Meta-Llama-3-8B-Instruct",
+        # model: str = "CohereLabs/command-a-reasoning-08-2025", #provider="cohere",
         timeout: int = 60
     ):
         self.api_token =token
@@ -25,7 +26,8 @@ class HuggingFaceLLMClient:
         self.client = InferenceClient(
             model=model,
             token=token,
-            provider="together",
+            # provider="nscale",
+            provider="cohere",
             timeout=timeout
         )
 
@@ -33,16 +35,10 @@ class HuggingFaceLLMClient:
         """
         Generate text from a prompt using Hugging Face Inference API.
         """       
-        response = self.client.text_generation(
-            prompt,
-            max_new_tokens=512,
-            temperature=0.0,
-            do_sample=False,
-            return_full_text=False
+        response = self.client.chat_completion(
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=1500,
+            temperature=0.7
         )
-
-        # text_generation can return str or list[str] depending on backend
-        if isinstance(response, list):
-            return response[0]
-
-        return response
+        print("response",response.choices[0].message.content)
+        return response.choices[0].message.content

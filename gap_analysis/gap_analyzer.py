@@ -1,7 +1,11 @@
 
 import re
 from typing import List, Dict
+
+from webargs import missing
 from gap_analysis.llm_skill_extractor import extract_skills_with_llm
+from similarity.similarity_service import cosine_similarity_np
+from embeddings.embedding_service import generate_embedding
 
 # ✅ Canonical skill vocabulary
 SKILL_VOCABULARY = {
@@ -138,7 +142,53 @@ def simple_analyze_gaps(resume_text: str, jd_text: str) -> dict:
     #     "missing_skills": missing_skills,
     #     "extra_skills": extra_skills
     # }
-    
+  
+
+def semantic_match(skill_a, skill_b, threshold=0.8):
+    emb_a = generate_embedding(skill_a)
+    emb_b = generate_embedding(skill_b)
+
+    score = cosine_similarity_np(emb_a, emb_b)
+    return score >= threshold
+  
+
+def canonicalize_skill(skill: str) -> str:
+    skill = skill.lower().strip()
+
+    replacements = {
+        "framework": "",
+        "development": "",
+        "services": "",
+        "tools": "",
+        "platforms": "",
+    }
+
+    for k, v in replacements.items():
+        skill = skill.replace(k, v)
+
+    skill = " ".join(skill.split())
+    return skill
+
+
+def semantic_match_with_any(
+    jd_skill: str,
+    resume_skills: set,
+    resume_skill_embedding,
+    jd_skill_embedding,
+    threshold: float = 0.8
+) -> bool:
+    jd_emb = jd_skill_embedding[jd_skill]
+
+    for rs in resume_skills:
+        if rs in jd_skill or jd_skill in rs:
+            rs_emb = resume_skill_embedding[rs]
+            if cosine_similarity_np(jd_emb, rs_emb) >= threshold:
+                return True
+
+    return False
+
+def create_embeddings(skills: set[str]) -> dict[str, list[float]]:
+    return {skill:generate_embedding(skill) for skill in skills}
 
 def analyze_gaps_with_llm(
     resume_text: str,
@@ -149,14 +199,44 @@ def analyze_gaps_with_llm(
     Perform gap analysis using LLM-extracted skills.
     """
     
-    resume_skills = set(extract_skills_with_llm(resume_text, llm_client))
-    jd_skills = set(extract_skills_with_llm(jd_text, llm_client))
+    resume_skills_raw = set(extract_skills_with_llm(resume_text, llm_client))
+    jd_skills_raw = set(extract_skills_with_llm(jd_text, llm_client))
+
+    resume_skills = {canonicalize_skill(s) for s in resume_skills_raw}
+    jd_skills = {canonicalize_skill(s) for s in jd_skills_raw}
+    
+    resume_skill_embedding = create_embeddings(resume_skills)
+    jd_skill_embedding = create_embeddings(jd_skills)
+    
+    print('Embeddings created')
+
+    matching=set()
+    missing = set()
+    
+    # Exact matching 
+    exact_matches = resume_skills & jd_skills
+    matching |= exact_matches
+    
+    # Semantic fallback
+    for jd_skill in jd_skills:
+        if jd_skill not in matching:
+            if semantic_match_with_any(
+                jd_skill,
+                resume_skills,
+                resume_skill_embedding,
+                jd_skill_embedding
+            ):
+                matching.add(jd_skill)
+            else:
+                missing.add(jd_skill)
 
     
+    extra = resume_skills - matching
+
     return {
-        "matching_skills": sorted(resume_skills & jd_skills),
-        "missing_skills": sorted(jd_skills - resume_skills),
-        "extra_skills": sorted(resume_skills - jd_skills),
+        "matching_skills": sorted(matching),
+        "missing_skills": sorted(missing),
+        "extra_skills": sorted(extra),
     }
 
 
